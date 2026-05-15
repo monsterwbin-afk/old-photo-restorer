@@ -1,0 +1,8 @@
+{
+  "name": "AI Old Photo Restorer",
+  "description": "An AI-powered web application to restore, colorize, and repair old, black-and-white, or damaged photos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
