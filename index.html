@@ -8,9 +8,13 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       body {
-        background-color: #F9F6F1;
-        color: #4A453E;
-        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+        background-color: #f9f6f1;
+        color: #4a453e;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          sans-serif;
       }
       .slider-container {
         position: relative;
@@ -21,7 +25,7 @@
         border-radius: 40px;
         overflow: hidden;
         cursor: crosshair;
-        background-color: #2D2A26;
+        background-color: #2d2a26;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         user-select: none;
         -webkit-user-select: none;
@@ -77,113 +81,467 @@
     </style>
   </head>
   <body>
-    <div class="min-h-screen selection:bg-[#D1CEC7]">
-      <!-- Header -->
-      <header class="border-b border-[#E5E1D8] bg-[#F9F6F1] sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-10 py-6 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-[#7C7464] rounded-full flex flex-col items-center justify-center text-white">
-              <i data-lucide="sparkles" style="width: 20px; height: 20px;"></i>
+    <div
+      class="min-h-screen flex flex-col justify-between selection:bg-[#D1CEC7]"
+    >
+      <div class="w-full flex-grow flex flex-col">
+        <!-- Header -->
+        <header
+          class="border-b border-[#E5E1D8] bg-[#F9F6F1] sticky top-0 z-50"
+        >
+          <div
+            class="max-w-6xl mx-auto px-10 py-6 flex items-center justify-between"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 bg-[#7C7464] rounded-full flex flex-col items-center justify-center text-white"
+              >
+                <i data-lucide="sparkles" style="width: 20px; height: 20px"></i>
+              </div>
+              <h1
+                class="text-xl font-serif font-bold tracking-tight uppercase text-[#2D2A26]"
+              >
+                Time Travel Photo
+              </h1>
             </div>
-            <h1 class="text-xl font-serif font-bold tracking-tight uppercase text-[#2D2A26]">Time Travel Photo</h1>
+            <nav
+              class="flex gap-4 md:gap-8 text-sm font-medium uppercase tracking-widest overflow-x-auto whitespace-nowrap -mr-4 md:mr-0 pr-4 md:pr-0 scrollbar-hide"
+            >
+              <button
+                id="nav-restore"
+                class="text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold"
+              >
+                Restore
+              </button>
+              <button
+                id="nav-age"
+                class="text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1"
+              >
+                Time Machine
+              </button>
+              <button
+                id="nav-about"
+                class="text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1"
+              >
+                About
+              </button>
+              <button
+                id="nav-privacy"
+                class="text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1"
+              >
+                Privacy
+              </button>
+            </nav>
           </div>
-          <nav class="flex gap-8 text-sm font-medium uppercase tracking-widest">
-            <button id="nav-restore" class="text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold">Restore</button>
-            <button id="nav-age" class="text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1">Time Machine</button>
-            <button id="nav-about" class="text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1">About</button>
-          </nav>
-        </div>
-      </header>
+        </header>
 
-      <main class="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center">
-        <!-- About Section -->
-        <div id="section-about" class="hidden text-center max-w-2xl mt-8 mb-12 w-full">
-          <h2 class="text-4xl md:text-5xl font-serif italic text-[#2D2A26] mb-8">About Time Travel Photo</h2>
-          <div class="text-[#7C7464] text-lg leading-relaxed flex flex-col gap-6 text-left bg-white p-10 rounded-3xl shadow-sm border border-[#E5E1D8]">
-            <p>On my website, you can freely use it to breathe new life into old photos and turn modern moments into timeless vintage memories.</p>
-            <p>If you have any questions or suggestions about my webpage, please feel free to contact me at <strong>monster.wbin (at) gmail (dot) com</strong>, thank you for using.</p>
-          </div>
-        </div>
-
-        <!-- Main Workspace -->
-        <div id="section-workspace" class="w-full max-w-4xl flex flex-col items-center">
-          <!-- Text Intro -->
-          <div id="intro-text" class="text-center max-w-2xl mb-12">
-            <h2 id="intro-heading" class="text-4xl md:text-5xl font-serif italic text-[#2D2A26] mb-6">
-              Breathe new life into <br class="hidden md:block" /> old & damaged photos
+        <main class="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center">
+          <!-- About Section -->
+          <div
+            id="section-about"
+            class="hidden text-center max-w-2xl mt-8 mb-12 w-full"
+          >
+            <h2
+              class="text-4xl md:text-5xl font-serif italic text-[#2D2A26] mb-8"
+            >
+              About Time Travel Photo
             </h2>
-            <p id="intro-desc" class="text-[#7C7464] text-lg leading-relaxed">
-              Upload your black and white or degraded photos. Our AI model will analyze, denoise, and restore them with stunning clarity.
-            </p>
+            <div
+              class="text-[#7C7464] text-lg leading-relaxed flex flex-col gap-6 text-left bg-white p-10 rounded-3xl shadow-sm border border-[#E5E1D8]"
+            >
+              <p>
+                On my website, you can freely use it to breathe new life into
+                old photos and turn modern moments into timeless vintage
+                memories.
+              </p>
+              <p>
+                If you have any questions or suggestions about my webpage,
+                please feel free to contact me at
+                <strong>monster.wbin (at) gmail (dot) com</strong>, thank you
+                for using.
+              </p>
+            </div>
           </div>
 
-          <!-- Upload Box -->
-          <div id="upload-box" class="w-full aspect-[16/9] max-h-[500px] border-2 border-dashed border-[#D1CEC7] rounded-3xl flex flex-col items-center justify-center bg-white hover:bg-[#F2EFE9] transition-colors cursor-pointer group p-8 text-center" onclick="document.getElementById('file-input').click()">
-            <div class="w-16 h-16 rounded-full bg-[#F2EFE9] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-              <i data-lucide="cloud-upload" class="text-[#A39A86] w-8 h-8"></i>
+          <!-- Privacy Policy Section -->
+          <div
+            id="section-privacy"
+            class="hidden text-center max-w-4xl mt-8 mb-12 w-full mx-auto"
+          >
+            <h2
+              class="text-4xl md:text-5xl font-serif italic text-[#2D2A26] mb-8"
+            >
+              Privacy Policy
+            </h2>
+            <div
+              class="text-[#7C7464] text-lg leading-relaxed flex flex-col gap-8 text-left bg-white p-10 rounded-3xl shadow-sm border border-[#E5E1D8]"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  1. We Respect Your Privacy
+                </h3>
+                <p>
+                  Your privacy is strictly protected when using Time Travel
+                  Photo. The most important thing to know is:
+                  <strong
+                    >We do not store, keep, or harvest the photos you
+                    upload.</strong
+                  >
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  2. How Your Photos Are Handled
+                </h3>
+                <p>
+                  All image processing is handled securely. Once you upload an
+                  image for restoration or aging effects, it is temporarily
+                  processed to generate the result. We do not permanently store
+                  your uploaded pictures or the restored results on any server
+                  database. Once the process is successfully completed, the
+                  temporary cache is cleared.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  3. Data Collection & Cookies
+                </h3>
+                <p>
+                  We do not collect any personally identifiable information
+                  (PII) from our users. However, in order to sustain this free
+                  tool, we use standard analytics and advertising cookies (such
+                  as those from Google AdSense) to help us understand
+                  non-personal website traffic patterns and deliver relevant
+                  advertisements.
+                </p>
+                <ul class="list-disc pl-6 mt-3 space-y-1">
+                  <li>
+                    Third party vendors, including Google, use cookies to serve
+                    ads based on your prior visits to this website or other
+                    websites.
+                  </li>
+                  <li>
+                    Google's use of advertising cookies enables it and its
+                    partners to serve ads to you based on your visit to our site
+                    and/or other sites on the Internet.
+                  </li>
+                  <li>
+                    You may opt out of personalized advertising by visiting
+                    Google's
+                    <a
+                      href="https://myadcenter.google.com/"
+                      target="_blank"
+                      class="text-[#2D2A26] underline font-medium"
+                      >Ads Settings</a
+                    >.
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  4. Third-Party Services
+                </h3>
+                <p>
+                  We leverage robust AI infrastructure and APIs (such as Hugging
+                  Face Spaces) to process the images. Your images are
+                  temporarily transmitted securely for the sole purpose of
+                  applying the effect. These trusted third parties are governed
+                  by strict ephemeral data policies, ensuring user assets are
+                  removed right after the operation is complete.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  5. Updates To This Policy
+                </h3>
+                <p>
+                  We may update this Privacy Policy from time to time. Any
+                  changes will be posted directly here. If you have any further
+                  questions or concerns about our data handling, please contact
+                  us at <strong>monster.wbin (at) gmail (dot) com</strong>.
+                </p>
+              </div>
             </div>
-            <h3 class="text-xl font-medium text-[#2D2A26] mb-2">Click or drag to upload</h3>
-            <p class="text-[#A39A86] text-sm mb-6">Supports JPG, PNG, TIFF</p>
-            <div class="px-6 py-2 rounded-full border border-[#E5E1D8] text-[#4A453E] text-sm font-medium flex items-center gap-2 group-hover:bg-[#E5E1D8] transition-colors">
-              <i data-lucide="image" style="width: 16px; height: 16px;"></i> Select Photo
-            </div>
-            <input type="file" id="file-input" class="hidden" accept="image/*" />
           </div>
 
-          <!-- Preview & Process Area -->
-          <div id="preview-area" class="hidden w-full flex-col gap-6">
-            <div class="flex items-center justify-between">
-              <button id="btn-back" class="flex items-center gap-2 text-sm text-[#7C7464] hover:text-[#2D2A26] transition-colors uppercase tracking-wider font-bold">
-                &larr; Back to upload
-              </button>
-              <button id="btn-download" class="hidden flex items-center gap-2 px-5 py-3 bg-white text-[#2D2A26] shadow-sm rounded-xl text-sm font-bold transition-colors hover:shadow-md">
-                <i data-lucide="download" style="width: 16px; height: 16px;"></i> Download Result
-              </button>
+          <!-- Main Workspace -->
+          <div
+            id="section-workspace"
+            class="w-full max-w-4xl flex flex-col items-center"
+          >
+            <!-- Text Intro -->
+            <div id="intro-text" class="text-center max-w-2xl mb-12">
+              <h2
+                id="intro-heading"
+                class="text-4xl md:text-5xl font-serif italic text-[#2D2A26] mb-6"
+              >
+                Breathe new life into <br class="hidden md:block" />
+                old & damaged photos
+              </h2>
+              <p id="intro-desc" class="text-[#7C7464] text-lg leading-relaxed">
+                Upload your black and white or degraded photos. Our AI model
+                will analyze, denoise, and restore them with stunning clarity.
+              </p>
             </div>
 
-            <!-- Visualizer Box -->
-            <div class="w-full bg-[#E5E1D8] p-1 rounded-[44px] shadow-sm">
-              <!-- Result Slider -->
-              <div id="slider-view" class="hidden slider-container">
-                <img id="slider-after" class="slider-image slider-after" src="" alt="After" draggable="false" />
-                <img id="slider-before" class="slider-image slider-before" src="" alt="Before" draggable="false" />
-                <div id="slider-line" class="slider-line" style="left: 50%;">
-                  <div class="slider-handle">
-                    <div class="flex gap-1">
-                      <div class="w-[2px] h-4 bg-[#7C7464]"></div>
-                      <div class="w-[2px] h-4 bg-[#7C7464]"></div>
+            <!-- Upload Box -->
+            <div
+              id="upload-box"
+              class="w-full aspect-[16/9] max-h-[500px] border-2 border-dashed border-[#D1CEC7] rounded-3xl flex flex-col items-center justify-center bg-white hover:bg-[#F2EFE9] transition-colors cursor-pointer group p-8 text-center"
+              onclick="document.getElementById('file-input').click()"
+            >
+              <div
+                class="w-16 h-16 rounded-full bg-[#F2EFE9] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform"
+              >
+                <i
+                  data-lucide="cloud-upload"
+                  class="text-[#A39A86] w-8 h-8"
+                ></i>
+              </div>
+              <h3 class="text-xl font-medium text-[#2D2A26] mb-2">
+                Click or drag to upload
+              </h3>
+              <p class="text-[#A39A86] text-sm mb-6">Supports JPG, PNG, TIFF</p>
+              <div
+                class="px-6 py-2 rounded-full border border-[#E5E1D8] text-[#4A453E] text-sm font-medium flex items-center gap-2 group-hover:bg-[#E5E1D8] transition-colors"
+              >
+                <i data-lucide="image" style="width: 16px; height: 16px"></i>
+                Select Photo
+              </div>
+              <input
+                type="file"
+                id="file-input"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
+
+            <!-- Preview & Process Area -->
+            <div id="preview-area" class="hidden w-full flex-col gap-6">
+              <div class="flex items-center justify-between">
+                <button
+                  id="btn-back"
+                  class="flex items-center gap-2 text-sm text-[#7C7464] hover:text-[#2D2A26] transition-colors uppercase tracking-wider font-bold"
+                >
+                  &larr; Back to upload
+                </button>
+                <button
+                  id="btn-download"
+                  class="hidden flex items-center gap-2 px-5 py-3 bg-white text-[#2D2A26] shadow-sm rounded-xl text-sm font-bold transition-colors hover:shadow-md"
+                >
+                  <i
+                    data-lucide="download"
+                    style="width: 16px; height: 16px"
+                  ></i>
+                  Download Result
+                </button>
+              </div>
+
+              <!-- Visualizer Box -->
+              <div class="w-full bg-[#E5E1D8] p-1 rounded-[44px] shadow-sm">
+                <!-- Result Slider -->
+                <div id="slider-view" class="hidden slider-container">
+                  <img
+                    id="slider-after"
+                    class="slider-image slider-after"
+                    src=""
+                    alt="After"
+                    draggable="false"
+                  />
+                  <img
+                    id="slider-before"
+                    class="slider-image slider-before"
+                    src=""
+                    alt="Before"
+                    draggable="false"
+                  />
+                  <div id="slider-line" class="slider-line" style="left: 50%">
+                    <div class="slider-handle">
+                      <div class="flex gap-1">
+                        <div class="w-[2px] h-4 bg-[#7C7464]"></div>
+                        <div class="w-[2px] h-4 bg-[#7C7464]"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Default Preview -->
+                <div
+                  id="default-preview"
+                  class="relative w-full aspect-auto min-h-[400px] max-h-[70vh] rounded-[40px] overflow-hidden bg-[#2D2A26] shadow-2xl flex items-center justify-center"
+                >
+                  <img
+                    id="preview-img"
+                    class="w-full h-full object-contain transition-all duration-700"
+                    src=""
+                  />
+
+                  <div
+                    id="processing-overlay"
+                    class="hidden absolute inset-0 flex-col items-center justify-center pointer-events-none bg-black/40"
+                  >
+                    <i
+                      data-lucide="refresh-cw"
+                      class="animate-spin text-[#A39A86] mb-4 w-8 h-8"
+                    ></i>
+                    <div
+                      class="text-white font-bold tracking-widest uppercase text-xs mb-1 drop-shadow-md"
+                    >
+                      Processing
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Default Preview -->
-              <div id="default-preview" class="relative w-full aspect-auto min-h-[400px] max-h-[70vh] rounded-[40px] overflow-hidden bg-[#2D2A26] shadow-2xl flex items-center justify-center">
-                <img id="preview-img" class="w-full h-full object-contain transition-all duration-700" src="" />
-                
-                <div id="processing-overlay" class="hidden absolute inset-0 flex-col items-center justify-center pointer-events-none bg-black/40">
-                  <i data-lucide="refresh-cw" class="animate-spin text-[#A39A86] mb-4 w-8 h-8"></i>
-                  <div class="text-white font-bold tracking-widest uppercase text-xs mb-1 drop-shadow-md">Processing</div>
-                </div>
+              <div class="flex justify-center mt-6">
+                <button
+                  id="btn-process"
+                  class="group relative flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 bg-[#7C7464] text-white rounded-2xl font-bold text-lg shadow-lg shadow-[#7C746433] transition-all hover:bg-[#686053]"
+                >
+                  <i
+                    id="btn-process-icon"
+                    data-lucide="sparkles"
+                    style="width: 20px; height: 20px"
+                  ></i>
+                  <span id="btn-process-text">Restore Photo</span>
+                </button>
+              </div>
+
+              <div
+                class="w-full flex mt-4 items-start gap-3 p-5 rounded-2xl bg-[#F2EFE9] border border-[#E5E1D8] text-[#7C7464]"
+              >
+                <i
+                  data-lucide="info"
+                  class="shrink-0 mt-0.5 text-[#A39A86]"
+                  style="width: 18px; height: 18px"
+                ></i>
+                <p class="text-sm leading-relaxed" id="status-hint">
+                  Please wait a moment, the photo will be restored shortly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Section (SEO & Information) -->
+          <div
+            id="section-content"
+            class="w-full max-w-4xl mt-24 mb-12 flex flex-col gap-10 text-[#4A453E]"
+          >
+            <div
+              class="bg-white p-10 rounded-3xl shadow-sm border border-[#E5E1D8]"
+            >
+              <h2 class="text-3xl font-serif italic text-[#2D2A26] mb-6">
+                How Our AI Photo Tool Works
+              </h2>
+              <div class="space-y-4 text-lg leading-relaxed text-[#7C7464]">
+                <p>
+                  Time Travel Photo utilizes cutting-edge artificial
+                  intelligence and deep learning to breathe new life into older,
+                  faded, or damaged photographs. At its core, the application
+                  leverages Generative Adversarial Networks (GANs) and advanced
+                  image processing models to intelligently guess missing pixels,
+                  remove noise, and sharpen blurred facial details.
+                </p>
+                <p class="font-medium text-[#2D2A26] mt-6">
+                  Step-by-step Guide:
+                </p>
+                <ol class="list-decimal pl-6 space-y-3">
+                  <li>
+                    <strong>Upload Your Image:</strong> Use the drag-and-drop
+                    box above to securely select your vintage or damaged photo.
+                    Supported formats include JPG, PNG, and TIFF.
+                  </li>
+                  <li>
+                    <strong>Automatic Analysis:</strong> Once uploaded, our AI
+                    algorithm scans the picture, checking for scratches, blur,
+                    fading, and noise patterns typically found in old camera
+                    films.
+                  </li>
+                  <li>
+                    <strong>Instant Restoration:</strong> The model processes
+                    the image in seconds, attempting to restore clarity,
+                    contrast, and color fidelity while preserving the original
+                    historical essence of the photo.
+                  </li>
+                  <li>
+                    <strong>Download & Share:</strong> Compare the before and
+                    after results seamlessly with our interactive slider, and
+                    click the "Download Result" button to save the masterfully
+                    restored high-definition photo securely to your local
+                    device.
+                  </li>
+                </ol>
               </div>
             </div>
 
-            <div class="flex justify-center mt-6">
-              <button id="btn-process" class="group relative flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-4 bg-[#7C7464] text-white rounded-2xl font-bold text-lg shadow-lg shadow-[#7C746433] transition-all hover:bg-[#686053]">
-                <i id="btn-process-icon" data-lucide="sparkles" style="width: 20px; height: 20px;"></i> 
-                <span id="btn-process-text">Restore Photo</span>
-              </button>
-            </div>
-            
-            <div class="w-full flex mt-4 items-start gap-3 p-5 rounded-2xl bg-[#F2EFE9] border border-[#E5E1D8] text-[#7C7464]">
-              <i data-lucide="info" class="shrink-0 mt-0.5 text-[#A39A86]" style="width: 18px; height: 18px;"></i>
-              <p class="text-sm leading-relaxed" id="status-hint">
-                Please wait a moment, the photo will be restored shortly.
-              </p>
+            <div
+              class="bg-white p-10 rounded-3xl shadow-sm border border-[#E5E1D8]"
+            >
+              <h2 class="text-3xl font-serif italic text-[#2D2A26] mb-6">
+                The Importance of Photo Restoration
+              </h2>
+              <div class="space-y-4 text-lg leading-relaxed text-[#7C7464]">
+                <p>
+                  Since the popularization of photography in the 19th and 20th
+                  centuries, keeping physical prints intact has been a constant
+                  struggle. Environmental factors, humidity, sunlight, and
+                  simple wear-and-tear degrade photo paper and color chemicals
+                  over decades, risking the permanent loss of our most precious
+                  family histories.
+                </p>
+                <p>
+                  Traditional photo restoration was an incredibly painstaking
+                  manual process. Archival experts and skilled artists would use
+                  chemicals, brushes, and later, early digital software like
+                  Photoshop, to meticulously repair scratches pixel by pixel. A
+                  single meaningful family photo could take hours or even days
+                  of hard manual work and require high fees.
+                </p>
+                <p>
+                  Today, AI-driven photo restoration democratizes this process.
+                  What used to be accessible only to professionals can now be
+                  done globally in a matter of seconds. By bridging the gap
+                  between historical heritage and modern computational power, we
+                  ensure that memories—from a great-grandparent's wedding day to
+                  early childhood moments—are never completely lost to time. Not
+                  only can you use our tool to repair real vintage imagery, but
+                  you can also use our exclusive "Time Machine" feature to
+                  seamlessly age modern photos and experience nostalgia.
+                </p>
+              </div>
             </div>
           </div>
+        </main>
+      </div>
+
+      <!-- Footer -->
+      <footer class="w-full bg-[#F2EFE9] border-t border-[#E5E1D8] mt-auto">
+        <div
+          class="max-w-6xl mx-auto px-10 py-10 flex flex-col md:flex-row justify-between items-center text-[#7C7464] text-sm"
+        >
+          <p>&copy; 2026 Time Travel Photo. All rights reserved.</p>
+          <div
+            class="flex gap-6 mt-4 md:mt-0 font-medium tracking-wide uppercase text-xs"
+          >
+            <button
+              id="footer-privacy"
+              class="hover:text-[#2D2A26] transition-colors"
+            >
+              Privacy Policy
+            </button>
+            <button
+              id="footer-about"
+              class="hover:text-[#2D2A26] transition-colors"
+            >
+              About Us
+            </button>
+          </div>
         </div>
-      </main>
+      </footer>
     </div>
 
     <script>
@@ -191,71 +549,104 @@
       lucide.createIcons();
 
       // State
-      let currentMode = 'restore';
+      let currentMode = "restore";
       let uploadedImageObjUrl = null;
       let restoredImageObjUrl = null;
       let uploadedFile = null;
       let isProcessing = false;
 
       // DOM Elements
-      const navRestore = document.getElementById('nav-restore');
-      const navAge = document.getElementById('nav-age');
-      const navAbout = document.getElementById('nav-about');
-      
-      const sectionAbout = document.getElementById('section-about');
-      const sectionWorkspace = document.getElementById('section-workspace');
-      
-      const introText = document.getElementById('intro-text');
-      const introHeading = document.getElementById('intro-heading');
-      const introDesc = document.getElementById('intro-desc');
-      
-      const uploadBox = document.getElementById('upload-box');
-      const previewArea = document.getElementById('preview-area');
-      const previewImg = document.getElementById('preview-img');
-      const processingOverlay = document.getElementById('processing-overlay');
-      
-      const defaultPreview = document.getElementById('default-preview');
-      const sliderView = document.getElementById('slider-view');
-      const sliderBefore = document.getElementById('slider-before');
-      const sliderAfter = document.getElementById('slider-after');
-      const sliderLine = document.getElementById('slider-line');
-      
-      const btnBack = document.getElementById('btn-back');
-      const btnDownload = document.getElementById('btn-download');
-      const btnProcess = document.getElementById('btn-process');
-      const btnProcessText = document.getElementById('btn-process-text');
-      const btnProcessIcon = document.getElementById('btn-process-icon');
-      const fileInput = document.getElementById('file-input');
+      const navRestore = document.getElementById("nav-restore");
+      const navAge = document.getElementById("nav-age");
+      const navAbout = document.getElementById("nav-about");
+      const navPrivacy = document.getElementById("nav-privacy");
+      const footerPrivacy = document.getElementById("footer-privacy");
+      const footerAbout = document.getElementById("footer-about");
+
+      const sectionAbout = document.getElementById("section-about");
+      const sectionPrivacy = document.getElementById("section-privacy");
+      const sectionWorkspace = document.getElementById("section-workspace");
+      const sectionContent = document.getElementById("section-content");
+
+      const introText = document.getElementById("intro-text");
+      const introHeading = document.getElementById("intro-heading");
+      const introDesc = document.getElementById("intro-desc");
+
+      const uploadBox = document.getElementById("upload-box");
+      const previewArea = document.getElementById("preview-area");
+      const previewImg = document.getElementById("preview-img");
+      const processingOverlay = document.getElementById("processing-overlay");
+
+      const defaultPreview = document.getElementById("default-preview");
+      const sliderView = document.getElementById("slider-view");
+      const sliderBefore = document.getElementById("slider-before");
+      const sliderAfter = document.getElementById("slider-after");
+      const sliderLine = document.getElementById("slider-line");
+
+      const btnBack = document.getElementById("btn-back");
+      const btnDownload = document.getElementById("btn-download");
+      const btnProcess = document.getElementById("btn-process");
+      const btnProcessText = document.getElementById("btn-process-text");
+      const btnProcessIcon = document.getElementById("btn-process-icon");
+      const fileInput = document.getElementById("file-input");
 
       // Functions
       function updateNavigation() {
-        [navRestore, navAge, navAbout].forEach(btn => {
-          btn.className = "text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1";
+        [navRestore, navAge, navAbout, navPrivacy].forEach((btn) => {
+          btn.className =
+            "text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1";
         });
-        
-        const statusHint = document.getElementById('status-hint');
 
-        if (currentMode === 'restore') navRestore.className = "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
-        else if (currentMode === 'age') navAge.className = "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
-        else if (currentMode === 'about') navAbout.className = "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
-        
-        if (currentMode === 'about') {
-          sectionAbout.classList.remove('hidden');
-          sectionWorkspace.classList.add('hidden');
-        } else {
-          sectionAbout.classList.add('hidden');
-          sectionWorkspace.classList.remove('hidden');
-          
-          if (currentMode === 'restore') {
-            introHeading.innerHTML = 'Breathe new life into <br class="hidden md:block" /> old & damaged photos';
-            introDesc.innerText = 'Upload your black and white or degraded photos. Our AI model will analyze, denoise, and restore them with stunning clarity.';
-            btnProcessText.innerText = 'Restore Photo';
-            if (statusHint) statusHint.innerText = 'Please wait a moment, the photo will be restored shortly.';
+        const statusHint = document.getElementById("status-hint");
+
+        if (currentMode === "restore")
+          navRestore.className =
+            "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
+        else if (currentMode === "age")
+          navAge.className =
+            "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
+        else if (currentMode === "about")
+          navAbout.className =
+            "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
+        else if (currentMode === "privacy")
+          navPrivacy.className =
+            "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
+
+        if (currentMode === "about" || currentMode === "privacy") {
+          sectionWorkspace.classList.add("hidden");
+          sectionContent.classList.add("hidden");
+
+          if (currentMode === "about") {
+            sectionAbout.classList.remove("hidden");
+            sectionPrivacy.classList.add("hidden");
           } else {
-            introHeading.innerHTML = 'Turn modern moments into <br class="hidden md:block" /> timeless vintage memories';
-            introDesc.innerText = 'Upload your modern photos. Our simulated AI model will apply authentic vintage effects, film grain, and sepia tones to create a nostalgic masterpiece.';
-            btnProcessText.innerText = 'Make it Vintage';
-            if (statusHint) statusHint.innerText = 'Please wait a moment, the photo will travel back in time shortly.';
+            sectionAbout.classList.add("hidden");
+            sectionPrivacy.classList.remove("hidden");
+          }
+        } else {
+          sectionAbout.classList.add("hidden");
+          sectionPrivacy.classList.add("hidden");
+          sectionWorkspace.classList.remove("hidden");
+          sectionContent.classList.remove("hidden");
+
+          if (currentMode === "restore") {
+            introHeading.innerHTML =
+              'Breathe new life into <br class="hidden md:block" /> old & damaged photos';
+            introDesc.innerText =
+              "Upload your black and white or degraded photos. Our AI model will analyze, denoise, and restore them with stunning clarity.";
+            btnProcessText.innerText = "Restore Photo";
+            if (statusHint)
+              statusHint.innerText =
+                "Please wait a moment, the photo will be restored shortly.";
+          } else {
+            introHeading.innerHTML =
+              'Turn modern moments into <br class="hidden md:block" /> timeless vintage memories';
+            introDesc.innerText =
+              "Upload your modern photos. Our simulated AI model will apply authentic vintage effects, film grain, and sepia tones to create a nostalgic masterpiece.";
+            btnProcessText.innerText = "Make it Vintage";
+            if (statusHint)
+              statusHint.innerText =
+                "Please wait a moment, the photo will travel back in time shortly.";
           }
         }
       }
@@ -264,49 +655,54 @@
         uploadedImageObjUrl = null;
         restoredImageObjUrl = null;
         uploadedFile = null;
-        fileInput.value = '';
+        fileInput.value = "";
         updateWorkspaceView();
       }
 
       function updateWorkspaceView() {
         if (!uploadedImageObjUrl) {
-          uploadBox.classList.remove('hidden');
-          introText.classList.remove('hidden');
-          previewArea.classList.add('hidden');
+          uploadBox.classList.remove("hidden");
+          introText.classList.remove("hidden");
+          previewArea.classList.add("hidden");
         } else {
-          uploadBox.classList.add('hidden');
-          introText.classList.add('hidden');
-          previewArea.classList.remove('hidden');
-          previewArea.classList.add('flex');
-          
+          uploadBox.classList.add("hidden");
+          introText.classList.add("hidden");
+          previewArea.classList.remove("hidden");
+          previewArea.classList.add("flex");
+
           if (!restoredImageObjUrl) {
-            defaultPreview.classList.remove('hidden');
-            sliderView.classList.add('hidden');
+            defaultPreview.classList.remove("hidden");
+            sliderView.classList.add("hidden");
             previewImg.src = uploadedImageObjUrl;
             previewImg.style.filter = "none";
-            previewImg.classList.remove('opacity-40', 'grayscale', 'sepia-[0.5]');
-            btnProcess.classList.remove('hidden');
-            btnDownload.classList.add('hidden');
+            previewImg.classList.remove(
+              "opacity-40",
+              "grayscale",
+              "sepia-[0.5]",
+            );
+            btnProcess.classList.remove("hidden");
+            btnDownload.classList.add("hidden");
           } else {
-            defaultPreview.classList.add('hidden');
-            sliderView.classList.remove('hidden');
+            defaultPreview.classList.add("hidden");
+            sliderView.classList.remove("hidden");
             sliderBefore.src = uploadedImageObjUrl;
             sliderAfter.src = restoredImageObjUrl;
-            
+
             // Explicitly force reset any filters or opacity
             sliderBefore.style.filter = "none";
             sliderBefore.style.opacity = "1";
             sliderAfter.style.opacity = "1";
-            
-            btnProcess.classList.add('hidden');
-            btnDownload.classList.remove('hidden');
-            btnDownload.classList.add('flex');
-            
-            if (currentMode === 'age' && isSimulatedFallback) {
-               // Only apply CSS filter if we used simulated fallback for aging
-               sliderAfter.style.filter = "grayscale(1) sepia(0.5) contrast(0.75) brightness(0.9)";
+
+            btnProcess.classList.add("hidden");
+            btnDownload.classList.remove("hidden");
+            btnDownload.classList.add("flex");
+
+            if (currentMode === "age" && isSimulatedFallback) {
+              // Only apply CSS filter if we used simulated fallback for aging
+              sliderAfter.style.filter =
+                "grayscale(1) sepia(0.5) contrast(0.75) brightness(0.9)";
             } else {
-               sliderAfter.style.filter = "none";
+              sliderAfter.style.filter = "none";
             }
           }
         }
@@ -316,22 +712,22 @@
 
       async function createSimulatedProcessedImage() {
         isSimulatedFallback = false;
-        if (currentMode === 'restore') {
+        if (currentMode === "restore") {
           try {
             console.log("Connecting to AI model...");
             // Use the global object provided by module script
             const Client = window.GradioClient;
             if (!Client) throw new Error("Gradio client not loaded");
-            
+
             // =========================================================================
             // 💡 如果你想更换使用的 AI 模型，只需要更改以下几行代码！
             // =========================================================================
-            
+
             // 1. 更换调用的 Hugging Face Space 名称 (比如 "leonelhs/deoldify" 或 "TencentARC/GFPGAN")
-            const app = await Client.connect("leonelhs/deoldify"); 
+            const app = await Client.connect("leonelhs/deoldify");
             const response_0 = await fetch(uploadedImageObjUrl);
             const blob_0 = await response_0.blob();
-            
+
             // 2. 更改调用的 API 接口（通常是 "/predict" 或 "/colorize" 等）
             // 3. 更改输入参数格式。不同的模型要求不同的参数格式（对象或数组）。
             //    例如：
@@ -339,64 +735,81 @@
             //    - GFPGAN: [blob_0, "v1.4", 2]
             //    - DDColor: [blob_0]
             const result = await app.predict("/predict", { image: blob_0 });
-            
+
             // =========================================================================
-            
+
             if (result.data && result.data.length > 0) {
               // 4. 解析返回的数据 （有些模型直接返回 URL 字符串，有些返回对象，有些返回嵌套数组）
               //    比如 DDColor 会返回嵌套数组，需要改成类似于：
               //    const outputData = result.data[0];
               //    const coloredImage = Array.isArray(outputData) ? outputData[1] : outputData;
               //    return typeof coloredImage === 'string' ? coloredImage : (coloredImage.url || coloredImage);
-              return typeof result.data[0] === 'string' ? result.data[0] : (result.data[0].url || result.data[0]);
+              return typeof result.data[0] === "string"
+                ? result.data[0]
+                : result.data[0].url || result.data[0];
             }
           } catch (e) {
-            console.error("Gradio API error, falling back to local simulation:", e);
+            console.error(
+              "Gradio API error, falling back to local simulation:",
+              e,
+            );
             isSimulatedFallback = true;
           }
         } else {
           isSimulatedFallback = true;
         }
 
-        // For the single HTML version, we just use the original image 
+        // For the single HTML version, we just use the original image
         // with CSS filters applied via JS canvas to create a real downloadable image
         return new Promise((resolve) => {
           const img = new Image();
           img.onload = () => {
-            const canvas = document.createElement('canvas');
+            const canvas = document.createElement("canvas");
             canvas.width = img.width;
             canvas.height = img.height;
-            const ctx = canvas.getContext('2d');
-            
-            if (currentMode === 'age') {
-              ctx.filter = "grayscale(100%) sepia(50%) contrast(75%) brightness(90%)";
+            const ctx = canvas.getContext("2d");
+
+            if (currentMode === "age") {
+              ctx.filter =
+                "grayscale(100%) sepia(50%) contrast(75%) brightness(90%)";
             } else {
               ctx.filter = "saturate(120%) contrast(110%) brightness(110%)";
             }
-            
+
             ctx.drawImage(img, 0, 0);
-            resolve(canvas.toDataURL('image/jpeg', 0.9));
+            resolve(canvas.toDataURL("image/jpeg", 0.9));
           };
           img.src = uploadedImageObjUrl;
         });
       }
 
       // Event Listeners
-      navRestore.addEventListener('click', () => { currentMode = 'restore'; resetWorkspace(); updateNavigation(); });
-      navAge.addEventListener('click', () => { currentMode = 'age'; resetWorkspace(); updateNavigation(); });
-      navAbout.addEventListener('click', () => { currentMode = 'about'; resetWorkspace(); updateNavigation(); });
+      const navigateTo = (mode) => {
+        currentMode = mode;
+        resetWorkspace();
+        updateNavigation();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
 
-      fileInput.addEventListener('change', (e) => {
+      navRestore.addEventListener("click", () => navigateTo("restore"));
+      navAge.addEventListener("click", () => navigateTo("age"));
+      navAbout.addEventListener("click", () => navigateTo("about"));
+      navPrivacy.addEventListener("click", () => navigateTo("privacy"));
+
+      footerPrivacy.addEventListener("click", () => navigateTo("privacy"));
+      footerAbout.addEventListener("click", () => navigateTo("about"));
+
+      fileInput.addEventListener("change", (e) => {
         if (e.target.files && e.target.files[0]) {
           uploadedFile = e.target.files[0];
           uploadedImageObjUrl = URL.createObjectURL(uploadedFile);
           updateWorkspaceView();
         }
       });
-      
+
       // Drag and drop
-      uploadBox.addEventListener('dragover', (e) => e.preventDefault());
-      uploadBox.addEventListener('drop', (e) => {
+      uploadBox.addEventListener("dragover", (e) => e.preventDefault());
+      uploadBox.addEventListener("drop", (e) => {
         e.preventDefault();
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
           uploadedFile = e.dataTransfer.files[0];
@@ -405,57 +818,58 @@
         }
       });
 
-      btnBack.addEventListener('click', () => {
+      btnBack.addEventListener("click", () => {
         if (!isProcessing) resetWorkspace();
       });
 
-      btnProcess.addEventListener('click', async () => {
+      btnProcess.addEventListener("click", async () => {
         if (isProcessing || !uploadedImageObjUrl) return;
-        
+
         isProcessing = true;
-        btnProcess.setAttribute('disabled', 'true');
-        btnProcessText.innerText = 'Processing...';
-        btnProcessIcon.setAttribute('data-lucide', 'refresh-cw');
-        btnProcessIcon.classList.add('animate-spin');
+        btnProcess.setAttribute("disabled", "true");
+        btnProcessText.innerText = "Processing...";
+        btnProcessIcon.setAttribute("data-lucide", "refresh-cw");
+        btnProcessIcon.classList.add("animate-spin");
         lucide.createIcons();
-        
-        previewImg.classList.add('opacity-40', 'grayscale', 'sepia-[0.5]');
-        processingOverlay.classList.remove('hidden');
-        processingOverlay.classList.add('flex');
+
+        previewImg.classList.add("opacity-40", "grayscale", "sepia-[0.5]");
+        processingOverlay.classList.remove("hidden");
+        processingOverlay.classList.add("flex");
 
         // Simulate network delay
-        await new Promise(r => setTimeout(r, 2000));
-        
+        await new Promise((r) => setTimeout(r, 2000));
+
         restoredImageObjUrl = await createSimulatedProcessedImage();
-        
+
         isProcessing = false;
-        btnProcess.removeAttribute('disabled');
-        btnProcessIcon.classList.remove('animate-spin');
-        btnProcessIcon.setAttribute('data-lucide', 'sparkles');
+        btnProcess.removeAttribute("disabled");
+        btnProcessIcon.classList.remove("animate-spin");
+        btnProcessIcon.setAttribute("data-lucide", "sparkles");
         lucide.createIcons();
-        
+
         previewImg.style.filter = "none";
-        previewImg.classList.remove('opacity-40', 'grayscale', 'sepia-[0.5]');
-        processingOverlay.classList.add('hidden');
-        processingOverlay.classList.remove('flex');
-        
+        previewImg.classList.remove("opacity-40", "grayscale", "sepia-[0.5]");
+        processingOverlay.classList.add("hidden");
+        processingOverlay.classList.remove("flex");
+
         updateWorkspaceView();
       });
 
-      btnDownload.addEventListener('click', async () => {
+      btnDownload.addEventListener("click", async () => {
         if (!restoredImageObjUrl) return;
 
-        let ext = 'jpg';
-        let baseName = 'time-travel-photo';
+        let ext = "jpg";
+        let baseName = "time-travel-photo";
         if (uploadedFile) {
-          const parts = uploadedFile.name.split('.');
+          const parts = uploadedFile.name.split(".");
           if (parts.length > 1) ext = parts.pop();
-          baseName = parts.join('.');
+          baseName = parts.join(".");
         }
 
         try {
-          btnDownload.classList.add('opacity-50', 'pointer-events-none');
-          btnDownload.innerHTML = '<i data-lucide="loader-2" class="animate-spin" style="width: 16px; height: 16px;"></i> Downloading...';
+          btnDownload.classList.add("opacity-50", "pointer-events-none");
+          btnDownload.innerHTML =
+            '<i data-lucide="loader-2" class="animate-spin" style="width: 16px; height: 16px;"></i> Downloading...';
           lucide.createIcons();
 
           const response = await fetch(restoredImageObjUrl);
@@ -468,7 +882,7 @@
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-          
+
           setTimeout(() => URL.revokeObjectURL(localUrl), 1000);
         } catch (err) {
           console.error("Download failed, opening in new tab", err);
@@ -480,40 +894,43 @@
           link.click();
           document.body.removeChild(link);
         } finally {
-          btnDownload.classList.remove('opacity-50', 'pointer-events-none');
-          btnDownload.innerHTML = '<i data-lucide="download" style="width: 16px; height: 16px;"></i> Download Result';
+          btnDownload.classList.remove("opacity-50", "pointer-events-none");
+          btnDownload.innerHTML =
+            '<i data-lucide="download" style="width: 16px; height: 16px;"></i> Download Result';
           lucide.createIcons();
         }
       });
 
       // Slider Logic
       let isDragging = false;
-      sliderView.addEventListener('mousedown', () => isDragging = true);
-      sliderView.addEventListener('touchstart', () => isDragging = true, {passive: true});
-      
-      window.addEventListener('mouseup', () => isDragging = false);
-      window.addEventListener('touchend', () => isDragging = false);
-      
+      sliderView.addEventListener("mousedown", () => (isDragging = true));
+      sliderView.addEventListener("touchstart", () => (isDragging = true), {
+        passive: true,
+      });
+
+      window.addEventListener("mouseup", () => (isDragging = false));
+      window.addEventListener("touchend", () => (isDragging = false));
+
       let renderTimeout;
       function moveSlider(e) {
         if (!isDragging) return;
         let clientX = e.clientX;
         if (e.touches && e.touches.length > 0) clientX = e.touches[0].clientX;
-        
+
         if (renderTimeout) cancelAnimationFrame(renderTimeout);
         renderTimeout = requestAnimationFrame(() => {
           const rect = sliderView.getBoundingClientRect();
           let x = Math.max(0, Math.min(clientX - rect.left, rect.width));
           let percentage = (x / rect.width) * 100;
-          
+
           sliderLine.style.left = `calc(${percentage}% - 1px)`;
           // Use inset for better performance and to prevent flickering
           sliderBefore.style.clipPath = `inset(0 calc(100% - ${percentage}%) 0 0)`;
         });
       }
-      
-      window.addEventListener('mousemove', moveSlider);
-      window.addEventListener('touchmove', moveSlider, {passive: true});
+
+      window.addEventListener("mousemove", moveSlider);
+      window.addEventListener("touchmove", moveSlider, { passive: true });
 
       // Init
       updateNavigation();
@@ -525,4 +942,3 @@
     </script>
   </body>
 </html>
-
