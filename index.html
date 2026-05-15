@@ -131,6 +131,12 @@
               >
                 Privacy
               </button>
+              <button
+                id="nav-terms"
+                class="text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1"
+              >
+                Terms
+              </button>
             </nav>
           </div>
         </header>
@@ -263,6 +269,49 @@
                   changes will be posted directly here. If you have any further
                   questions or concerns about our data handling, please contact
                   us at <strong>monster.wbin (at) gmail (dot) com</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms of Service Section -->
+          <div
+            id="section-terms"
+            class="hidden text-center max-w-4xl mt-8 mb-12 w-full mx-auto"
+          >
+            <h2
+              class="text-4xl md:text-5xl font-serif italic text-[#2D2A26] mb-8"
+            >
+              Terms of Service & Disclaimer
+            </h2>
+            <div
+              class="text-[#7C7464] text-lg leading-relaxed flex flex-col gap-8 text-left bg-white p-10 rounded-3xl shadow-sm border border-[#E5E1D8]"
+            >
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  Disclaimer
+                </h3>
+                <p class="mt-4">
+                  This tool uses AI technology to automatically generate
+                  results, which are intended for entertainment and reference
+                  purposes only. We do not guarantee 100% historical accuracy.
+                  This website assumes no legal responsibility for any image
+                  inaccuracies, data corruption, or other losses resulting from
+                  the use of AI.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-2xl font-bold text-[#2D2A26] mb-3">
+                  Technology & Licensing
+                </h3>
+                <p>
+                  This website uses the <strong>DeOldify</strong> technology to
+                  power its photo restoration and aging features.
+                </p>
+                <p class="mt-2 text-sm">
+                  Copyright (c) 2018 Jason Antic. Licensed under the MIT
+                  License.
                 </p>
               </div>
             </div>
@@ -539,6 +588,12 @@
             >
               About Us
             </button>
+            <button
+              id="footer-terms"
+              class="hover:text-[#2D2A26] transition-colors"
+            >
+              Terms of Service
+            </button>
           </div>
         </div>
       </footer>
@@ -560,11 +615,15 @@
       const navAge = document.getElementById("nav-age");
       const navAbout = document.getElementById("nav-about");
       const navPrivacy = document.getElementById("nav-privacy");
+      const navTerms = document.getElementById("nav-terms");
+
       const footerPrivacy = document.getElementById("footer-privacy");
       const footerAbout = document.getElementById("footer-about");
+      const footerTerms = document.getElementById("footer-terms");
 
       const sectionAbout = document.getElementById("section-about");
       const sectionPrivacy = document.getElementById("section-privacy");
+      const sectionTerms = document.getElementById("section-terms");
       const sectionWorkspace = document.getElementById("section-workspace");
       const sectionContent = document.getElementById("section-content");
 
@@ -592,7 +651,7 @@
 
       // Functions
       function updateNavigation() {
-        [navRestore, navAge, navAbout, navPrivacy].forEach((btn) => {
+        [navRestore, navAge, navAbout, navPrivacy, navTerms].forEach((btn) => {
           btn.className =
             "text-[#A39A86] hover:text-[#2D2A26] transition-colors pb-1";
         });
@@ -611,21 +670,33 @@
         else if (currentMode === "privacy")
           navPrivacy.className =
             "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
+        else if (currentMode === "terms")
+          navTerms.className =
+            "text-[#2D2A26] border-b border-[#2D2A26] pb-1 font-bold";
 
-        if (currentMode === "about" || currentMode === "privacy") {
+        if (
+          currentMode === "about" ||
+          currentMode === "privacy" ||
+          currentMode === "terms"
+        ) {
           sectionWorkspace.classList.add("hidden");
           sectionContent.classList.add("hidden");
 
+          sectionAbout.classList.add("hidden");
+          sectionPrivacy.classList.add("hidden");
+          sectionTerms.classList.add("hidden");
+
           if (currentMode === "about") {
             sectionAbout.classList.remove("hidden");
-            sectionPrivacy.classList.add("hidden");
-          } else {
-            sectionAbout.classList.add("hidden");
+          } else if (currentMode === "privacy") {
             sectionPrivacy.classList.remove("hidden");
+          } else if (currentMode === "terms") {
+            sectionTerms.classList.remove("hidden");
           }
         } else {
           sectionAbout.classList.add("hidden");
           sectionPrivacy.classList.add("hidden");
+          sectionTerms.classList.add("hidden");
           sectionWorkspace.classList.remove("hidden");
           sectionContent.classList.remove("hidden");
 
@@ -795,9 +866,11 @@
       navAge.addEventListener("click", () => navigateTo("age"));
       navAbout.addEventListener("click", () => navigateTo("about"));
       navPrivacy.addEventListener("click", () => navigateTo("privacy"));
+      navTerms.addEventListener("click", () => navigateTo("terms"));
 
       footerPrivacy.addEventListener("click", () => navigateTo("privacy"));
       footerAbout.addEventListener("click", () => navigateTo("about"));
+      footerTerms.addEventListener("click", () => navigateTo("terms"));
 
       fileInput.addEventListener("change", (e) => {
         if (e.target.files && e.target.files[0]) {
